@@ -45,7 +45,7 @@ class CJScrapper(CrawlSpider):
 		RowTitle = Html.xpath("//ul[contains(@class,'row')]/li//p")
 		for Post in RowTitle:
 			yield {
-				'posturl' : Post.xpath("a/@href").extract(),
+				'posturl' : response.urljoin(Post.xpath("a/@href").extract()[0]),
 				'time' : Post.xpath("time/@datetime").extract(),
 				'posttitle' : Post.xpath("a/text()").extract(),
 				'parse_posts' : response.url,
