@@ -46,6 +46,7 @@ class CJScrapper(CrawlSpider):
 		for Post in RowTitle:
 			yield {
 				'posturl' : Post.xpath("a/@href").extract(),
+				'time' : Post.xpath("time/@datetime").extract(),
 				'posttitle' : Post.xpath("a/text()").extract(),
 				'parse_posts' : response.url,
 			}
