@@ -3,6 +3,7 @@
 This is an entry level crawler for helping beginners in understanding how Scrapy works in general. This particular crawler will retrieve all available listings from `"computer gigs"` section in all regions of the world and store in a CSV file using command line parameters.
 
 How to use the script:<br>
+`scrapy crawl cjscrap`
 `scrapy crawl cjscrap -o Cjoutput.csv -t CSV`
 
 Script would fetch following fields:
@@ -10,6 +11,10 @@ Script would fetch following fields:
 - [x] Post Title
 - [x] Post URL
 - [x] Date & Time
+
+New Features:
+- [x] Rotating User agents
+- [x] MySQLdb support
 
 Future changes:
 - [ ] Rolling Proxies support
