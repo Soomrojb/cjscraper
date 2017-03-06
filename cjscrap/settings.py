@@ -14,6 +14,7 @@ BOT_NAME = 'cjscrap'
 SPIDER_MODULES = ['cjscrap.spiders']
 NEWSPIDER_MODULE = 'cjscrap.spiders'
 
+USER_AGENT_LIST = "useragents.txt"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'cjscrap (+http://www.yourdomain.com)'
@@ -53,6 +54,11 @@ NEWSPIDER_MODULE = 'cjscrap.spiders'
 #    'cjscrap.middlewares.MyCustomDownloaderMiddleware': 543,
 #}
 
+DOWNLOADER_MIDDLEWARES = {
+	'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware': None,
+	'random_useragent.RandomUserAgentMiddleware': 400
+}
+
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
 #EXTENSIONS = {
@@ -64,6 +70,10 @@ NEWSPIDER_MODULE = 'cjscrap.spiders'
 #ITEM_PIPELINES = {
 #    'cjscrap.pipelines.SomePipeline': 300,
 #}
+
+ITEM_PIPELINES = {
+    'amazon.pipelines.CraigsListPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
