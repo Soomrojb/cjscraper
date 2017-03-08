@@ -1,9 +1,10 @@
 import scrapy
+import urllib
 from bs4 import BeautifulSoup
 from scrapy import Request, Selector
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
-from cjscrap.item import CjscrapItem
+from cjscrap.items import CjscrapItem
 
 class CJScrapper(CrawlSpider):
 	name = "cjscrap"
@@ -30,9 +31,10 @@ class CJScrapper(CrawlSpider):
 		Html = Selector(response)
 		RowTitle = Html.xpath("//ul[contains(@class,'row')]/li//p")
 		for Post in RowTitle:
-			items['posturl'] = response.urljoin(Post.xpath("a/@href").extract()[0])
-			items['time'] = Post.xpath("time/@datetime").extract()
-			items['posttitle'] = Post.xpath("a/text()").extract()
+			# encode special characters in all fields
+			items['posturl'] = response.urljoin(Post.xpath("a/@href").extract()[0].encode('utf-8'))
+			items['time'] = Post.xpath("time/@datetime").extract()[0].encode('utf-8')
+			items['posttitle'] = urllib.quote(Post.xpath("a/text()").extract()[0].encode('utf-8'))
 			items['parse_posts'] = response.url
 			yield items
 
