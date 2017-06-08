@@ -28,4 +28,9 @@ Required Repos:
 - [x] `pip install scrapy-random-useragent`
 - [x] `apt-get install python-mysqldb`
 
+Additional Repos for Windows:
+- [x] `pip install wheel`
+- [x] `easy_install mysql-python`
+- [x] `Install VCForPython27.msi`
+
 > Approach me directly, If you want to participate in any manner.
