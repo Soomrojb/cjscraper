@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `craigslistdb`
 --
-DROP DATABASE `craigslistdb`;
+-- DROP DATABASE `craigslistdb`;
 
 -- --------------------------------------------------------
 
