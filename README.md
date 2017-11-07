@@ -17,7 +17,7 @@ New Features:
 - [x] MySQLdb support
 
 Future changes:
-- [ ] Rolling Proxies support
+- [x] Rolling Proxies support
 - [ ] New field: Post description
 - [ ] New field: Email / Phone of poster
 
@@ -26,6 +26,7 @@ Required Repos:
 - [x] `pip install mysqldb`
 - [x] `pip install beautifulsoup4`
 - [x] `pip install scrapy-random-useragent`
+- [x] `pip install scrapy-rotating-proxies`
 - [x] `apt-get install python-mysqldb`
 
 Additional Repos for Windows:
