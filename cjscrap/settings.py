@@ -16,56 +16,23 @@ NEWSPIDER_MODULE = 'cjscrap.spiders'
 
 USER_AGENT_LIST = "useragents.txt"
 
-
-# -----------------------------------------------------------------------------
-# ROTATED PROXY SETTINGS (Spider Settings Backend)
-# -----------------------------------------------------------------------------
-#DOWNLOADER_MIDDLEWARES.update({
-    #'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': None,
-    #'scrapy_rotated_proxy.downloadmiddlewares.proxy.RotatedProxyMiddleware': 750,
-#`})
-ROTATED_PROXY_ENABLED = True
-PROXY_STORAGE = 'scrapy_rotated_proxy.extensions.file_storage.FileProxyStorage'
-# When set PROXY_FILE_PATH='', scrapy-rotated-proxy
-# will use proxy in Spider Settings default.
-PROXY_FILE_PATH = ''
-HTTP_PROXIES = [
-'159.192.232.200:55555',
-'35.196.39.157:8080',
-'124.120.75.203:8080',
-'179.95.37.79:8080',
-'94.177.175.232:3128',
-'177.131.16.158:8081',
-'52.224.181.154:3128',
-'13.126.222.242:80',
-'58.26.10.67:8080',
-'13.115.180.145:8080',
-'128.199.236.22:3128',
-'173.212.202.65:443',
-'165.227.228.78:80',
-'149.255.154.4:8080',
-'5.189.133.231:80',
-'69.27.184.131:53281',
-'103.205.59.140:62947'
-]
-HTTPS_PROXIES = [
-'150.95.184.254:3128',
-'93.104.211.232:808',
-'180.254.192.228:9000',
-'52.68.207.46:8080',
-'213.44.87.247:8080',
-'52.197.37.22:8080',
-'103.43.149.151:80',
-'208.163.39.218:8118'
-]
-
+# Rotating Proxy Settings
+ROTATING_PROXY_LIST_PATH = 'proxylist.txt'
+ROTATING_PROXY_LOGSTATS_INTERVAL = 1
+ROTATING_PROXY_BACKOFF_CAP = 7200
+ROTATING_PROXY_PAGE_RETRY_TIMES = 20
+ROTATING_PROXY_BACKOFF_BASE = 5
+DOWNLOADER_MIDDLEWARES = {
+    'rotating_proxies.middlewares.RotatingProxyMiddleware': 610,
+    'rotating_proxies.middlewares.BanDetectionMiddleware': 620,
+}
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'cjscrap (+http://www.yourdomain.com)'
 #USER_AGENT = 'Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.0; Trident/4.0; Acoo Browser 1.98.744; .NET CLR 3.5.30729)'
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-CONCURRENT_REQUESTS=500
+CONCURRENT_REQUESTS=200
 
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
