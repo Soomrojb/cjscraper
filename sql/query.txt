@@ -1,0 +1,7 @@
+SELECT * FROM `cjposts`
+WHERE
+`scrap_date` > (CURDATE()-1) AND 
+`posttitle` REGEXP 'site|web|excel|java|script|php|scrap|data|fetch|ebay|amazon|python|built|build|make|design|develop|wordpress|cms|whiz|logo|graphic|lister|post|expert|linux|email|content|write|program|campaign|draft|magento|transcription|article|report|analy|selenium|beautifulsoup|autocad|proofread|project|macro|scrapy|framework|freelance|harvest|collect|zoho|parse|html|css|extract|website|drupal|commerce|graphic|photoshop|code|landing|page|site|software|digital|marketing|analys|imacro|automation|automate|crawler|crawling|scrap|azure|ubuntu|postfix|seo|optimiz|posting|template|upwork|fiverr|google|spreadsheet'
+AND
+`posttitle` NOT REGEXP 'money|local|cash|earn|agent|commission|sex|fuck|naked|minutes|labor|volunteer|architect|intern|labour|porn|investment|survey'
+ORDER BY `scrap_date` DESC
