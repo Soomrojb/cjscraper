@@ -14,10 +14,10 @@ Script would fetch following fields:
 
 New Features:
 - [x] Rotating User agents
+- [x] Rotating Proxies support
 - [x] MySQLdb support
 
 Future changes:
-- [x] Rolling Proxies support
 - [ ] New field: Post description
 - [ ] New field: Email / Phone of poster
 
